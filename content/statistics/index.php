@@ -19,11 +19,12 @@
     </script>
     <style>
         body{background: url("assets/images/bg-0.png");color: white;font-family: 微软雅黑;}
-        .center{text-align: center;
+        .center,p{text-align: center;
             font-size: 2em;
             color: red;}
-       span>option{font-weight: bold;font-size: 2em;}
-        .a{border-color: }
+       span>option,{font-weight: bold;font-size: 2em;}
+        select{background-color: gray;}
+
     </style>
 </head>
 <body>
@@ -31,16 +32,29 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 center">
             <div>
-                <b>生成时间 <?= $data['time'] ?></b>
+                <b>最近更新时间： <?= $data['time'] ?></b>
             </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+            <p>
+                <b>每隔1小时刷新一次数据！</b>
+            </p>
         </div>
         <div class="col-xs-12 col-sm-12">
             <table class="table table-bordered a">
                 <tr>
                     <th>
-                        <span>
+                        <select>
                             <option>部门</option>
-                        </span>
+                            <option>电销一部</option>
+                            <option>超越队</option>
+                            <option>火狼队</option>
+                            <option>冲锋队</option>
+                            <option>团结队</option>
+                            <option>战狼队</option>
+                            <option>火焰队</option>
+                            <option>综合部</option>
+                        </select>
                     </th>
                     <th>
                         <span>
