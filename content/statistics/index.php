@@ -18,7 +18,7 @@
         });
     </script>
     <style>
-        body{background: url("assets/images/bodybg.jpg");color: white;font-family: 微软雅黑;}
+        body{background: url("assets/images/bg-0.png");color: white;font-family: 微软雅黑;}
         .center{text-align: center;
             font-size: 2em;
             color: red;}
