@@ -18,7 +18,7 @@ class Statistics extends Template
 
     function report()
     {
-        if (!$this->medoo->insert('cc_statistics', ['data' => $_POST['data']])) {
+        if (!$this->medoo->insert('cc_statistics', ['data' => $_POST['data'], 'deletetime' => NOW_TIME + 604800])) {
             echo "error";
         } else {
             echo "success";
