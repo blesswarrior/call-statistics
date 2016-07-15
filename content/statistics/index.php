@@ -13,18 +13,15 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
         $(function(){
-            var time=new Date();
-            console.log(time)
+           var option=$(".s option:selected").text();
+            
         });
     </script>
     <style>
         body{background: url("assets/images/bg-0.png");color: white;font-family: 微软雅黑;}
-        .center,p{text-align: center;
-            font-size: 2em;
-            color: red;}
-       span>option,{font-weight: bold;font-size: 2em;}
-        select{background-color: gray;}
-
+        .center,p{text-align: center;  font-size: 2em;  color: red;}
+        span>option{font-weight: bold;font-size: 1.5em;}
+        select{background-color: gray;font-weight: bold;font-size: 1.5em;}
     </style>
 </head>
 <body>
@@ -43,17 +40,15 @@
         <div class="col-xs-12 col-sm-12">
             <table class="table table-bordered a">
                 <tr>
-                    <th>
+                    <th class="s">
                         <select>
                             <option>部门</option>
-                            <option>电销一部</option>
                             <option>超越队</option>
                             <option>火狼队</option>
                             <option>冲锋队</option>
                             <option>团结队</option>
                             <option>战狼队</option>
                             <option>火焰队</option>
-                            <option>综合部</option>
                         </select>
                     </th>
                     <th>
