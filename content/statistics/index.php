@@ -23,6 +23,7 @@
             font-size: 2em;
             color: red;}
        span>option{font-weight: bold;font-size: 2em;}
+        .a{border-color: }
     </style>
 </head>
 <body>
@@ -34,7 +35,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12">
-            <table class="table table-bordered">
+            <table class="table table-bordered a">
                 <tr>
                     <th>
                         <span>
