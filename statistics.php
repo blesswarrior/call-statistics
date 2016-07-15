@@ -12,9 +12,13 @@ class Statistics extends Template
     function index()
     {
         $result = $this->medoo->get('cc_statistics', '*', 'ORDER BY `id` DESC');
+        /*
         $this->assign('time', strftime($result['createtime']));
         $this->assign('list', json_decode($result['data']));
         $this->display();
+        */
+        dump($result['createtime']);
+        dump(json_decode($result['data']));
     }
 
     function report()
