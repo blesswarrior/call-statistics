@@ -13,8 +13,11 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
         $(function(){
-           var option=$(".s option:selected").text();
-            
+            $("#s").change(function(){
+                var value = $('#s').find('option:selected').text();
+                $("tr>td:first-child:contains("+value+")").parent().show();
+                $("tr>td:first-child:not(:contains("+value+"))").parent().hide();
+            });
         });
     </script>
     <style>
@@ -34,21 +37,21 @@
         </div>
         <div class="col-xs-12 col-sm-12">
             <p>
-                <b>每隔1小时刷新一次数据！</b>
+                <b>每隔半小时刷新一次数据！</b>
             </p>
         </div>
         <div class="col-xs-12 col-sm-12">
-            <table class="table table-bordered a">
+            <table class="table table-bordered">
                 <tr>
-                    <th class="s">
-                        <select>
-                            <option>部门</option>
-                            <option>超越队</option>
-                            <option>火狼队</option>
-                            <option>冲锋队</option>
-                            <option>团结队</option>
-                            <option>战狼队</option>
-                            <option>火焰队</option>
+                    <th>
+                        <select id="s">
+                            <option value="0">部门</option>
+                            <option value="1">超越队</option>
+                            <option value="2">火狼队</option>
+                            <option value="3">冲锋队</option>
+                            <option value="4">团结队</option>
+                            <option value="5">战狼队</option>
+                            <option value="6">火焰队</option>
                         </select>
                     </th>
                     <th>
