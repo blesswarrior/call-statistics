@@ -11,12 +11,7 @@ class Statistics extends Template
 
     function index()
     {
-        if (!$date = I('get.date', null)) {
-            $result = $this->medoo->get('cc_statistics', '*', ['ORDER' => ['id' => 'DESC']]);
-        } else {
-            $result = $this->medoo->get('cc_statistics', '*', ['date' => $date]);
-        }
-        if ($result == false) {
+        if (!$result = $this->medoo->get('cc_statistics', '*', I('date') ? ['date' => I('date')] : ['ORDER' => ['id' => 'DESC']])) {
             $this->error('暂无数据');
         }
         $this->assign('time', date('Y-m-d H:i:s', $result['updatetime']));
@@ -28,26 +23,19 @@ class Statistics extends Template
     function report()
     {
         if ($this->medoo->has('cc_statistics', ['date' => $_POST['date']])) {
-            if ($this->medoo->update('cc_statistics', [
+            $result = $this->medoo->update('cc_statistics', [
                 'data' => $_POST['data'],
                 'updatetime' => NOW_TIME,
-            ], ['date' => $_POST['date']])) {
-                return 'success';
-            } else {
-                return 'fail';
-            }
+            ], ['date' => $_POST['date']]);
         } else {
-            if ($this->medoo->insert('cc_statistics', [
+            $result = $this->medoo->insert('cc_statistics', [
                 'date' => $_POST['date'],
                 'data' => $_POST['data'],
                 'updatetime' => NOW_TIME,
                 'deletetime' => NOW_TIME + 2592000
-            ])) {
-                return 'success';
-            } else {
-                return 'fail';
-            }
+            ]);
         }
+        return $result;
     }
 }
 
