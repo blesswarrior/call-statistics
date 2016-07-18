@@ -16,6 +16,9 @@ class Statistics extends Template
         } else {
             $result = $this->medoo->get('cc_statistics', '*', ['date' => $date]);
         }
+        if ($result == false) {
+            $this->error('暂无数据');
+        }
         $this->assign('time', date('Y-m-d H:i:s', $result['updatetime']));
         $this->assign('list', json_decode($result['data']));
         $this->assign('date', $this->medoo->select('cc_statistics', 'date'));
