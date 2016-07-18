@@ -63,14 +63,13 @@
             </select>
         </div>
         <div class="col-xs-12 col-sm-12">
-            <table data-toggle="table" data-striped="true" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100" >
+            <table data-toggle="table" data-striped="true" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100">
                 <thead>
                     <tr>
                         <th data-sortable="true">部门</th>
                         <th data-sortable="true">姓名</th>
                         <th data-sortable="true">预测</th>
                         <th data-sortable="true">手拨</th>
-                        <th data-sortable="true">秒数</th>
                         <th data-sortable="true">总计</th>
                     </tr>
                 </thead>
@@ -81,7 +80,6 @@
                         <td><?= $list[1] ?></td>
                         <td><?= $list[2] ?></td>
                         <td><?= $list[3] ?></td>
-                        <td><?= $list[4] ?></td>
                         <td><?= $list[5] ?></td>
                     </tr>
                     <?php endforeach; ?>
