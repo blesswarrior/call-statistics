@@ -5,13 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>讯隆员工-当天通话报表</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-table.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+            background: #f1f4f7;
+            padding-top: 20px;
+            color: #5f6468;
+        }
+    </style>
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap-table.min.js"></script>
+    <script src="assets/js/language/bootstrap-table-zh-CN.js"></script>
+    <script type="text/javascript">
         $(document).ready(function() {
             $('#d').change(function() {
                 window.location.href = 'statistics.php?date=' + $(this).children('option:selected').val();
@@ -23,12 +31,6 @@
             });
         });
     </script>
-    <style>
-        body{background: url("assets/images/bg-0.png");color: white;font-family: 微软雅黑;}
-        .center,p{text-align: center;  font-size: 2em;  color: red;}
-        span>option{font-weight: bold;font-size: 1.5em;}
-        select{background-color: gray;font-weight: bold;font-size: 1.5em;}
-    </style>
 </head>
 <body>
 <div class="container-fluid">
@@ -44,63 +46,50 @@
             </p>
         </div>
         <div class="col-xs-12 col-sm-12">
-            <table class="table table-bordered">
-                <tr>
-                    <th>
-                        <select id="d">
-                            <option>筛选日期</option>
-                            <?php foreach ($data['date'] as $date): ?>
-                            <option><?= $date ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <select id="s">
-                            <option value="0">筛选部门</option>
-                            <option value="1">超越队</option>
-                            <option value="2">火狼队</option>
-                            <option value="3">冲锋队</option>
-                            <option value="4">团结队</option>
-                            <option value="5">战狼队</option>
-                            <option value="6">火焰队</option>
-                        </select>
-                    </th>
-                    <th>
-                        <span>
-                            <option>姓名</option>
-                        </span>
-                    </th>
-                    <th>
-                        <span>
-                            <option>预测</option>
-                        </span>
-                    </th>
-                    <th>
-                        <span>
-                            <option>手拨</option>
-                        </span>
-                    </th>
-                    <th>
-                        <span>
-                            <option>秒数</option>
-                        </span>
-                    </th>
-                    <th>
-                        <span>
-                            <option>总计</option>
-                        </span>
-                    </th>
-                </tr>
-                <?php foreach ($data['list'] as $list): ?>
-                <tr>
-                    <td><?= $list[0] ?></td>
-                    <td><?= $list[1] ?></td>
-                    <td><?= $list[2] ?></td>
-                    <td><?= $list[3] ?></td>
-                    <td><?= $list[4] ?></td>
-                    <td><?= $list[5] ?></td>
-                </tr>
+            <select id="d">
+                <option>筛选日期</option>
+                <?php foreach ($data['date'] as $date): ?>
+                <option><?= $date ?></option>
                 <?php endforeach; ?>
+            </select>
+            <select id="s">
+                <option value="0">筛选部门</option>
+                <option value="1">超越队</option>
+                <option value="2">火狼队</option>
+                <option value="3">冲锋队</option>
+                <option value="4">团结队</option>
+                <option value="5">战狼队</option>
+                <option value="6">火焰队</option>
+            </select>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+            <table data-toggle="table" data-striped="true" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100" >
+                <thead>
+                    <tr>
+                        <th data-sortable="true">部门</th>
+                        <th data-sortable="true">姓名</th>
+                        <th data-sortable="true">预测</th>
+                        <th data-sortable="true">手拨</th>
+                        <th data-sortable="true">秒数</th>
+                        <th data-sortable="true">总计</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($data['list'] as $list): ?>
+                    <tr>
+                        <td><?= $list[0] ?></td>
+                        <td><?= $list[1] ?></td>
+                        <td><?= $list[2] ?></td>
+                        <td><?= $list[3] ?></td>
+                        <td><?= $list[4] ?></td>
+                        <td><?= $list[5] ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+
 </body>
 </html>
