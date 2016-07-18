@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
-        $(function(){
-            $("#s").change(function(){
+        $(document).ready(function() {
+            $('#d').change(function() {
+                window.location.href = 'statistics.php?date=' + $(this).children('option:selected').val();
+            });
+            $("#s").change(function() {
                 var value = $('#s').find('option:selected').text();
                 $("tr>td:first-child:contains("+value+")").parent().show();
                 $("tr>td:first-child:not(:contains("+value+"))").parent().hide();
@@ -40,6 +43,12 @@
                 <b>每隔半小时刷新一次数据！</b>
             </p>
         </div>
+        <select id="d">
+            <option>选择日期</option>
+            <?php foreach ($data['date'] as $date): ?>
+            <option value="<?= $date ?>"><?= $date ?></option>
+            <?php endforeach; ?>
+        </select>
         <div class="col-xs-12 col-sm-12">
             <table class="table table-bordered">
                 <tr>
@@ -105,6 +114,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
