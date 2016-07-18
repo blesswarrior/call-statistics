@@ -2,7 +2,7 @@
 /*!
  * Medoo database framework
  * http://medoo.in
- * Version 1.1.1
+ * Version 1.1.2
  *
  * Copyright 2016, Angel Lai
  * Released under the MIT license
@@ -10,9 +10,9 @@
 class medoo
 {
 	// General
-	protected $database_type = 'mysql';
+	protected $database_type;
 
-	protected $charset = 'utf8';
+	protected $charset;
 
 	protected $database_name;
 
@@ -195,7 +195,14 @@ class medoo
 
 	protected function column_quote($string)
 	{
-		return preg_replace('/(\(JSON\)\s*|^#)?([a-zA-Z0-9_]*)\.([a-zA-Z0-9_]*)/', '"' . $this->prefix . '$2"."$3"', $string);
+		preg_match('/(\(JSON\)\s*|^#)?([a-zA-Z0-9_]*)\.([a-zA-Z0-9_]*)/', $string, $column_match);
+
+		if (isset($column_match[ 2 ], $column_match[ 3 ]))
+		{
+			return '"' . $this->prefix . $column_match[ 2 ] . '"."' . $column_match[ 3 ] . '"';
+		}
+
+		return '"' . $string . '"';
 	}
 
 	protected function column_push(&$columns)
@@ -730,6 +737,10 @@ class medoo
 
 	public function select($table, $join, $columns = null, $where = null)
 	{
+		$column = $where == null ? $join : $columns;
+
+		$is_single_column = (is_string($column) && $column !== '*');
+		
 		$query = $this->query($this->select_context($table, $join, $columns, $where));
 
 		$stack = array();
@@ -744,6 +755,11 @@ class medoo
 		if ($columns === '*')
 		{
 			return $query->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		if ($is_single_column)
+		{
+			return $query->fetchAll(PDO::FETCH_COLUMN);
 		}
 
 		while ($row = $query->fetch(PDO::FETCH_ASSOC))
@@ -783,7 +799,7 @@ class medoo
 
 			foreach ($data as $key => $value)
 			{
-				$columns[] = $this->column_quote($key);
+				$columns[] = preg_replace("/^(\(JSON\)\s*|#)/i", "", $key);
 
 				switch (gettype($value))
 				{
@@ -836,7 +852,7 @@ class medoo
 			}
 			else
 			{
-				$column = $this->column_quote($key);
+				$column = $this->column_quote(preg_replace("/^(\(JSON\)\s*|#)/i", "", $key));
 
 				switch (gettype($value))
 				{

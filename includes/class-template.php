@@ -18,13 +18,24 @@ class Template
         } else {
             if ($GLOBALS['db']['host'] != '' && $GLOBALS['db']['username'] != '') {
                 $this->medoo = new medoo([
+                    'database_type' => 'mysql',
+                    'charset' => 'utf8',
                     'server' => $GLOBALS['db']['host'],
                     'database_name' => $GLOBALS['db']['name'],
                     'username' => $GLOBALS['db']['username'],
                     'password' => $GLOBALS['db']['password'],
                 ]);
             }
-            $this->$action();
+            $result = $this->$action();
+            if (is_string($result) or is_numeric($result)) {
+                echo $result;
+            } elseif (is_array($result)) {
+                echo json_encode($result);
+            } elseif (is_bool($result)) {
+                echo $result == true ? 'true' : 'false';
+            } else {
+                exit();
+            }
         }
     }
 
