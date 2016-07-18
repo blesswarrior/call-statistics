@@ -91,24 +91,12 @@
                 </tr>
                 <?php foreach ($data['list'] as $list): ?>
                 <tr>
-                    <td>
-                        <?= $list[0] ?>
-                    </td>
-                    <td>
-                        <?= $list[1] ?>
-                    </td>
-                    <td>
-                        <?= $list[2] ?>
-                    </td>
-                    <td>
-                        <?= $list[3] ?>
-                    </td>
-                    <td>
-                        <?= $list[4] ?>
-                    </td>
-                    <td>
-                        <?= $list[5] ?>
-                    </td>
+                    <td><?= $list[0] ?></td>
+                    <td><?= $list[1] ?></td>
+                    <td><?= $list[2] ?></td>
+                    <td><?= $list[3] ?></td>
+                    <td><?= $list[4] ?></td>
+                    <td><?= $list[5] ?></td>
                 </tr>
                 <?php endforeach; ?>
         </div>
