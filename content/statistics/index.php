@@ -13,16 +13,18 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
         $(function(){
-            var time=new Date();
-            console.log(time)
+            $("#s").change(function(){
+                var value = $('#s').find('option:selected').text();
+                $("tr>td:first-child:contains("+value+")").parent().show();
+                $("tr>td:first-child:not(:contains("+value+"))").parent().hide();
+            });
         });
     </script>
     <style>
-        body{background: url("assets/images/bodybg.jpg");color: white;font-family: 微软雅黑;}
-        .center{text-align: center;
-            font-size: 2em;
-            color: red;}
-       span>option{font-weight: bold;font-size: 2em;}
+        body{background: url("assets/images/bg-0.png");color: white;font-family: 微软雅黑;}
+        .center,p{text-align: center;  font-size: 2em;  color: red;}
+        span>option{font-weight: bold;font-size: 1.5em;}
+        select{background-color: gray;font-weight: bold;font-size: 1.5em;}
     </style>
 </head>
 <body>
@@ -30,16 +32,27 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 center">
             <div>
-                <b>生成时间 <?= $data['time'] ?></b>
+                <b>最近更新时间： <?= $data['time'] ?></b>
             </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+            <p>
+                <b>每隔半小时刷新一次数据！</b>
+            </p>
         </div>
         <div class="col-xs-12 col-sm-12">
             <table class="table table-bordered">
                 <tr>
                     <th>
-                        <span>
-                            <option>部门</option>
-                        </span>
+                        <select id="s">
+                            <option value="0">部门</option>
+                            <option value="1">超越队</option>
+                            <option value="2">火狼队</option>
+                            <option value="3">冲锋队</option>
+                            <option value="4">团结队</option>
+                            <option value="5">战狼队</option>
+                            <option value="6">火焰队</option>
+                        </select>
                     </th>
                     <th>
                         <span>
