@@ -29,7 +29,6 @@ class Statistics extends Template
                 return 'fail';
             }
         } else {
-
             if ($this->medoo->insert('cc_statistics', [
                 'date' => $_POST['date'],
                 'data' => $_POST['data'],
