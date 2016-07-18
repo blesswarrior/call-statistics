@@ -35,7 +35,11 @@ class Statistics extends Template
                 'deletetime' => NOW_TIME + 2592000
             ]);
         }
-        return $result;
+        if (!$result) {
+            return 'fail';
+        } else {
+            return 'success';
+        }
     }
 }
 
