@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 center">
             <div>
-                <b>最近更新时间： <?= $data['time'] ?></b>
+                <b>更新时间：<?= $data['time'] ?></b>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12">
@@ -43,18 +43,18 @@
                 <b>每隔半小时刷新一次数据！</b>
             </p>
         </div>
-        <select id="d">
-            <option>选择日期</option>
-            <?php foreach ($data['date'] as $date): ?>
-            <option value="<?= $date ?>"><?= $date ?></option>
-            <?php endforeach; ?>
-        </select>
         <div class="col-xs-12 col-sm-12">
             <table class="table table-bordered">
                 <tr>
                     <th>
+                        <select id="d">
+                            <option>筛选日期</option>
+                            <?php foreach ($data['date'] as $date): ?>
+                            <option><?= $date ?></option>
+                            <?php endforeach; ?>
+                        </select>
                         <select id="s">
-                            <option value="0">部门</option>
+                            <option value="0">筛选部门</option>
                             <option value="1">超越队</option>
                             <option value="2">火狼队</option>
                             <option value="3">冲锋队</option>
