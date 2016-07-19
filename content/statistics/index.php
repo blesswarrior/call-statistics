@@ -47,9 +47,10 @@
             $('#d').change(function() {
                 window.location.href = 'statistics.php?date=' + $(this).children('option:selected').val();
             });
+            var all = $('#s option').first('option:selected').text();
             $('#s').change(function() {
                 var value = $('#s').find('option:selected').text();
-                if (value == '筛选部门') {
+                if (value == all) {
                     $('tr>td:first-child:contains()').parent().show();
                 } else {
                     $('tr>td:first-child:contains(' + value + ')').parent().show();
