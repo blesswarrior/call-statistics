@@ -49,8 +49,12 @@
             });
             $('#s').change(function() {
                 var value = $('#s').find('option:selected').text();
-                $('tr>td:first-child:contains(' + value + ')').parent().show();
-                $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
+                if (value == '筛选部门') {
+                    $('tr>td:first-child:contains()').parent().show();
+                } else {
+                    $('tr>td:first-child:contains(' + value + ')').parent().show();
+                    $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
+                };
             });
         });
     </script>
@@ -95,7 +99,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($data['list'] as $list): ?>
-                    <tr <?= $list[4] > 10800 ? 'class="success highlight"' : null ?>>
+                    <tr <?= $list[4] >= 10800 ? 'class="success highlight"' : null ?>>
                         <td><?= $list[0] ?></td>
                         <td><?= $list[1] ?></td>
                         <td><?= $list[2] ?></td>
