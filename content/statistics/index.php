@@ -14,6 +14,14 @@
         padding-top: 20px;
         color: #5f6468;
     }
+    .statistics-footer {
+        padding: 40px 0;
+        color: #999;
+        text-align: center;
+    }
+    .statistics-footer p:last-child {
+        margin-bottom: 0;
+    }
     </style>
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -60,7 +68,7 @@
             </select>
         </div>
         <div class="col-xs-12 col-sm-12">
-            <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100" data-export-types="['csv', 'png']">
+            <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-show-pagination-switch="true" data-page-size="25" data-export-types="['csv', 'png']" >
                 <thead>
                     <tr>
                         <th data-sortable="true">部门</th>
@@ -85,5 +93,8 @@
         </div>
     </div>
 </div>
+<footer class="statistics-footer">
+    <p><a href="#top">返回顶部</a></p>
+</footer>
 </body>
 </html>
