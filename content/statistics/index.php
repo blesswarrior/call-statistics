@@ -4,30 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>讯隆员工-当天通话报表</title>
+    <title>迅隆员工 - 通话报表</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap-table.min.css" rel="stylesheet">
     <style type="text/css">
-        body {
-            font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
-            background: #f1f4f7;
-            padding-top: 20px;
-            color: #5f6468;
-        }
+    body {
+        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+        background: #f1f4f7;
+        padding-top: 20px;
+        color: #5f6468;
+    }
     </style>
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap-table.min.js"></script>
     <script src="assets/js/language/bootstrap-table-zh-CN.js"></script>
+    <script src="assets/js/bootstrap-table-export.min.js"></script>
+    <script src="assets/js/tableExport.min.js"></script>
+    <script src="assets/js/html2canvas.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#d').change(function() {
                 window.location.href = 'statistics.php?date=' + $(this).children('option:selected').val();
             });
-            $("#s").change(function() {
+            $('#s').change(function() {
                 var value = $('#s').find('option:selected').text();
-                $("tr>td:first-child:contains("+value+")").parent().show();
-                $("tr>td:first-child:not(:contains("+value+"))").parent().hide();
+                $('tr>td:first-child:contains(' + value + ')').parent().show();
+                $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
             });
         });
     </script>
@@ -35,15 +38,8 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 center">
-            <div>
-                <b>更新时间：<?= $data['time'] ?></b>
-            </div>
-        </div>
         <div class="col-xs-12 col-sm-12">
-            <p>
-                <b>每隔半小时刷新一次数据！</b>
-            </p>
+            <div class="alert alert-success" role="alert"><b>更新时间：<?= $data['time'] ?></b></div>
         </div>
         <div class="col-xs-12 col-sm-12">
             <select id="d">
@@ -63,7 +59,7 @@
             </select>
         </div>
         <div class="col-xs-12 col-sm-12">
-            <table data-toggle="table" data-striped="true" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100">
+            <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100" data-export-types="['csv', 'png']">
                 <thead>
                     <tr>
                         <th data-sortable="true">部门</th>
@@ -88,6 +84,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
