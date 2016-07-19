@@ -22,6 +22,17 @@
     .statistics-footer p:last-child {
         margin-bottom: 0;
     }
+    .highlight {
+        font-weight: bold;
+    }
+    .box {
+        margin-bottom: 0;
+    }
+    .fixed-table-toolbar:after {
+        clear: both;
+        content: "";
+        display: block;
+    }
     </style>
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -47,25 +58,29 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-sm-12">
-            <div class="alert alert-success" role="alert"><b>更新时间：<?= $data['time'] ?></b></div>
-        </div>
-        <div class="col-xs-12 col-sm-12">
-            <select id="d">
-                <option>筛选日期</option>
-                <?php foreach ($data['date'] as $date): ?>
-                <option><?= $date ?></option>
-                <?php endforeach; ?>
-            </select>
-            <select id="s">
-                <option value="0">筛选部门</option>
-                <option value="1">超越队</option>
-                <option value="2">火狼队</option>
-                <option value="3">冲锋队</option>
-                <option value="4">团结队</option>
-                <option value="5">战狼队</option>
-                <option value="6">火焰队</option>
-            </select>
+        <div class="col-xs-12 col-sm-12 box">
+            <div class="col-xs-12 col-sm-12 alert alert-success box"">
+                <div class="col-md-3">
+                    <div role="alert"><b>更新时间：<?= $data['time'] ?></b></div>
+                </div>
+                <div class="col-md-9">
+                    <select id="d">
+                        <option>筛选日期</option>
+                        <?php foreach ($data['date'] as $date): ?>
+                        <option><?= $date ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <select id="s">
+                        <option value="0">筛选部门</option>
+                        <option value="1">超越队</option>
+                        <option value="2">火狼队</option>
+                        <option value="3">冲锋队</option>
+                        <option value="4">团结队</option>
+                        <option value="5">战狼队</option>
+                        <option value="6">火焰队</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="col-xs-12 col-sm-12">
             <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-show-pagination-switch="true" data-page-size="25" data-export-types="['csv', 'png']" >
@@ -80,7 +95,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($data['list'] as $list): ?>
-                    <tr>
+                    <tr <?= $list[4] > 10800 ? 'class="success highlight"' : null ?>>
                         <td><?= $list[0] ?></td>
                         <td><?= $list[1] ?></td>
                         <td><?= $list[2] ?></td>
