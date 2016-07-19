@@ -20,8 +20,9 @@
     <script src="assets/js/bootstrap-table.min.js"></script>
     <script src="assets/js/language/bootstrap-table-zh-CN.js"></script>
     <script src="assets/js/bootstrap-table-export.min.js"></script>
-    <script src="assets/js/tableExport.min.js"></script>
     <script src="assets/js/html2canvas.min.js"></script>
+    <script src="assets/js/tableExport.min.js"></script>
+    <script src="assets/js/FileSaver.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#d').change(function() {
