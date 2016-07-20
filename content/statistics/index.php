@@ -7,33 +7,7 @@
     <title>迅隆员工 - 通话报表</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap-table.min.css" rel="stylesheet">
-    <style type="text/css">
-    body {
-        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
-        background: #f1f4f7;
-        padding-top: 20px;
-        color: #5f6468;
-    }
-    .statistics-footer {
-        padding: 40px 0;
-        color: #999;
-        text-align: center;
-    }
-    .statistics-footer p:last-child {
-        margin-bottom: 0;
-    }
-    .highlight {
-        font-weight: bold;
-    }
-    .box {
-        margin-bottom: 0;
-    }
-    .fixed-table-toolbar:after {
-        clear: both;
-        content: "";
-        display: block;
-    }
-    </style>
+    <link href="assets/css/main.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap-table.min.js"></script>
@@ -88,7 +62,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12">
-            <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-show-pagination-switch="true" data-page-size="25" data-export-types="['csv', 'png']" >
+            <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-page-size="25" data-export-types="['csv', 'png']" >
                 <thead>
                     <tr>
                         <th data-sortable="true">部门</th>
