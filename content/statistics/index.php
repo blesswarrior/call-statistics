@@ -39,7 +39,7 @@
                 var o = $(e.relatedTarget);
                 var name = o.data('whatever');
                 var modal = $(this);
-                modal.find('.modal-title').text('历史时长：' + name);
+                modal.find('.modal-title').text('历史时长 - ' + name);
                 $('#userstat').bootstrapTable('destroy');
                 $('#userstat').bootstrapTable($.extend({url: 'statistics.php?action=userstat'}, {
                     queryParams: function(params) {
