@@ -38,7 +38,16 @@
                 $(this).addClass("active").siblings().removeClass("active");
             });
             $('#myModal').on('show.bs.modal', function (e) {
-                alert('1');
+                var o = $(e.relatedTarget);
+                var name = o.data('whatever');
+                var modal = $(this);
+                modal.find('.modal-title').text('历史时长：' + name);
+                $('#userstat').bootstrapTable('destroy');
+                $('#userstat').bootstrapTable($.extend({url: 'statistics.php?action=userstat'}, {
+                    queryParams: function(params) {
+                        return $.extend({}, params, {name: name});
+                    }
+                }));
             });
         });
     </script>
@@ -50,30 +59,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel">历史时长</h4>
                 </div>
                 <div class="modal-body">
-                    <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="10" data-export-types="['csv', 'png']">
+                    <table id="userstat" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="15" data-export-types="['csv', 'png']">
                         <thead>
                             <tr>
-                                <th data-sortable="true">日期</th>
-                                <th data-sortable="true">姓名</th>
-                                <th data-sortable="true">时长</th>
+                                <th data-field="date">日期</th>
+                                <th data-field="name">姓名</th>
+                                <th data-field="timeformat">时长</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php foreach ($data['list'] as $list): ?>
-                            <tr>
-                                <td><?= $list[0] ?></td>
-                                <td><?= $list[3] ?></td>
-                                <td><?= $list[5] ?></td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">关闭窗口</button>
                 </div>
             </div>
         </div>
@@ -173,7 +173,7 @@
                 <?php foreach ($data['list'] as $list): ?>
                 <tr>
                     <td><?= $list[0] ?></td>
-                    <td class="shou" data-toggle="modal" data-target="#myModal"><?= $list[1] ?></td>
+                    <td class="shou" data-toggle="modal" data-target="#myModal" data-whatever="<?= $list[1] ?>"><?= $list[1] ?></td>
                     <td><?= $list[2] ?></td>
                     <td><?= $list[3] ?></td>
                     <td><?= $list[5] ?></td>
