@@ -40,12 +40,6 @@
                     $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
                 }
             });
-            $('#myModal').on('shown.bs.modal', function() {
-                $('#myInput').focus()
-            });
-            $(".height li").click(function() {
-                $(this).addClass("active").siblings().removeClass("active");
-            });
             $('#myModal').on('show.bs.modal', function (e) {
                 var o = $(e.relatedTarget);
                 var name = o.data('whatever');
@@ -98,15 +92,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="http://tools.xl127.com">Brand</a>
+                        <a class="navbar-brand" href="http://tools.xl127.com"><span><b>上海迅隆投资 - 统计报表</b></span></a>
                     </div>
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">Link</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">筛选日期 <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 筛选日期 <span class="caret"></span></a>
                                 <ul class="dropdown-menu d">
                                     <?php foreach ($data['date'] as $date): ?>
                                     <li><a href="javascript:void(0);"><?= $date ?></a></li>
@@ -114,7 +106,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">筛选部门 <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 筛选部门 <span class="caret"></span></a>
                                 <ul class="dropdown-menu s">
                                     <li><a href="javascript:void(0);" class="s-all">全部</a></li>
                                     <li><a href="javascript:void(0);">超越队</a></li>
@@ -134,9 +126,10 @@
     <div class="row">
         <div class="col-md-2 padding">
             <ul class="nav nav-pills nav-stacked height">
-                <li role="presentation" class="active"><a href="#">Home</a></li>
-                <li role="presentation"><a href="#">Profile</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
+                <li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-align-right" aria-hidden="true"></span> 统计报表</a></li>
+                <li role="presentation"><a href="http://www.xl127.com/" target="_blank"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 迅隆官网</a></li>
+                <li role="presentation"><a href="http://www.xl127.com/cc" target="_blank"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 呼叫中心</a></li>
+                <li role="presentation"><a href="http://www.xl127.com/tv" target="_blank"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> 财经直播</a></li>
             </ul>
         </div>
         <div class="col-md-10 tableH" style="background-color: white;">
@@ -157,7 +150,7 @@
                 </thead>
                 <tbody>
                 <?php foreach ($data['list'] as $list): ?>
-                <tr>
+                <tr <?= $list[4] >= 10800 ? 'class="success highlight"' : null ?>>
                     <td><?= $list[0] ?></td>
                     <td class="shou" data-toggle="modal" data-target="#myModal" data-whatever="<?= $list[1] ?>"><?= $list[1] ?></td>
                     <td><?= $list[2] ?></td>
