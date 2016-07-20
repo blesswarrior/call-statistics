@@ -25,8 +25,6 @@ class Statistics extends Template
             $this->error('暂无数据');
         }
         return $result;
-        //$this->assign('list', $result);
-        //$this->display();
     }
 
     function historystat() {

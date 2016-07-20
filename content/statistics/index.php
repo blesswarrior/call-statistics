@@ -18,8 +18,8 @@
     <script src="assets/js/tableExport.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#d').change(function() {
-                window.location.href = 'statistics.php?date=' + $(this).children('option:selected').val();
+            $(".d li").click(function() {
+                window.location.href = 'statistics.php?date=' + $(this).text();
             });
             var all = $('#s option').first('option:selected').text();
             $('#s').change(function() {
@@ -98,25 +98,15 @@
                             <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
                             <li><a href="#">Link</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">One more separated link</a></li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">筛选日期 <span class="caret"></span></a>
+                                <ul class="dropdown-menu d">
+                                    <?php foreach ($data['date'] as $date): ?>
+                                    <li><a href="#"><?= $date ?></a></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </li>
                         </ul>
                         <div role="alert" class="nav_xunlong">
-                            <select id="d">
-                                <option>筛选日期</option>
-                                <?php foreach ($data['date'] as $date): ?>
-                                <option><?= $date ?></option>
-                                <?php endforeach; ?>
-                            </select>
                             <select id="s">
                                 <option>筛选部门</option>
                                 <option>超越队</option>
