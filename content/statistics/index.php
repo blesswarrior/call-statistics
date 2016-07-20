@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>111迅隆员工 - 通话报表</title>
+    <title>迅隆员工 - 通话报表</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap-table.min.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
