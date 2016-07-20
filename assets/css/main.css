@@ -58,4 +58,4 @@ body {
     color: red;
 }
 
-.shou{cursor: pointer;}
+.shou{cursor: pointer; text-decoration: underline; color: #428bca}
