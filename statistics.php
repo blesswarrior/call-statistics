@@ -20,6 +20,18 @@ class Statistics extends Template
         $this->display();
     }
 
+    function userstat() {
+        if (!$result = $this->medoo->select('cc_stat_field', '*', ['name' => I('name')])) {
+            $this->error('暂无数据');
+        }
+        $this->assign('list', $result);
+        $this->display();
+    }
+
+    function historystat() {
+
+    }
+
     function report()
     {
         if ($this->medoo->has('cc_statistics', ['date' => $_POST['date']])) {
@@ -34,8 +46,36 @@ class Statistics extends Template
                 'updatetime' => NOW_TIME,
                 'deletetime' => NOW_TIME + 2592000
             ]);
+            yesterday_stat($_POST['date']);
         }
         if (!$result) {
+            return 'fail';
+        } else {
+            return 'success';
+        }
+    }
+
+    function yesterday_stat($date) {
+        $date = date('Ymd', strtotime('-1 day', strtotime($date)));
+        if ($this->medoo->has('cc_stat_field', ['date' => $date])) {
+            return 'success';
+        }
+        if (!$data = $this->medoo->get('cc_statistics', 'data', ['date' => $date])) {
+            return 'fail';
+        }
+        $data = json_decode($data);
+        $list = array();
+        foreach ($data as $data) {
+            $list[] = [
+                'date' => $date,
+                'name' => $data[1],
+                'time' => $data[4],
+                'timeformat' => $data[5],
+                'deletetime' => NOW_TIME + 2592000,
+            ];
+
+        }
+        if (!$this->medoo->insert('cc_stat_field', $list)) {
             return 'fail';
         } else {
             return 'success';
