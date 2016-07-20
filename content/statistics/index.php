@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>迅隆员工 - 通话报表</title>
+    <title>迅隆投资 - 通话时长报表</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap-table.min.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
@@ -31,16 +31,6 @@
                     $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
                 }
             });
-            var all = $('#s option').first('option:selected').text();
-            $('#s').change(function() {
-                var value = $('#s').find('option:selected').text();
-                if (value == all) {
-                    $('tr>td:first-child').parent().show();
-                } else {
-                    $('tr>td:first-child:contains(' + value + ')').parent().show();
-                    $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
-                }
-            });
             $('#myModal').on('show.bs.modal', function (e) {
                 var o = $(e.relatedTarget);
                 var name = o.data('whatever');
@@ -57,6 +47,11 @@
     </script>
 </head>
 <body>
+<!--[if lte IE 9 ]>
+<div class="alert alert-warning" role="alert">
+    <p>警告：你的浏览器太古董了，无法正常显示页面。 <a href="http://browsehappy.com/" target="_blank">请升级浏览器</a></p>
+</div>
+<![endif]-->
 <div class="container-fluid">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
@@ -69,9 +64,9 @@
                     <table id="userstat" data-striped="true" data-search="true" data-show-export="true" data-show-columns="true" data-pagination="true" data-page-size="15" data-export-types="['csv', 'png']">
                         <thead>
                             <tr>
-                                <th data-field="date">日期</th>
-                                <th data-field="name">姓名</th>
-                                <th data-field="timeformat">时长</th>
+                                <th data-sortable="true" data-field="date">日期</th>
+                                <th data-sortable="true" data-field="name">姓名</th>
+                                <th data-sortable="true" data-field="timeformat">时长</th>
                             </tr>
                         </thead>
                     </table>
@@ -93,7 +88,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="http://tools.xl127.com"><span><b>上海迅隆投资 - 统计报表</b></span></a>
+                        <a class="navbar-brand" href="http://tools.xl127.com"><span><strong>上海迅隆投资 - 统计报表</strong></span></a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
