@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>迅隆员工 - 通话报表</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -94,11 +95,10 @@
                         </button>
                         <a class="navbar-brand" href="http://tools.xl127.com"><span><b>上海迅隆投资 - 统计报表</b></span></a>
                     </div>
-
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 筛选日期 <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 历史报表 <span class="caret"></span></a>
                                 <ul class="dropdown-menu d">
                                     <?php foreach ($data['date'] as $date): ?>
                                     <li><a href="javascript:void(0);"><?= $date ?></a></li>
@@ -124,9 +124,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2 padding">
+        <div class="col-md-2 hidden-xs padding">
             <ul class="nav nav-pills nav-stacked height">
-                <li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-align-right" aria-hidden="true"></span> 统计报表</a></li>
+                <li role="presentation" class="active"><a href="statistics.php"><span class="glyphicon glyphicon-align-right" aria-hidden="true"></span> 统计报表</a></li>
                 <li role="presentation"><a href="http://www.xl127.com/" target="_blank"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 迅隆官网</a></li>
                 <li role="presentation"><a href="http://www.xl127.com/cc" target="_blank"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 呼叫中心</a></li>
                 <li role="presentation"><a href="http://www.xl127.com/tv" target="_blank"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> 财经直播</a></li>
