@@ -37,11 +37,9 @@
             $(".height li").click(function() {
                 $(this).addClass("active").siblings().removeClass("active");
             });
-        });
-    </script>
-    <script type="text/javascript">
-        $('#myModalLabel').on('show.bs.modal', function (e) {
-            alert('1');
+            $('#myModal').on('show.bs.modal', function (e) {
+                alert('1');
+            });
         });
     </script>
 </head>
