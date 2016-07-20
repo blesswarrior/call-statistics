@@ -25,40 +25,71 @@
             $('#s').change(function() {
                 var value = $('#s').find('option:selected').text();
                 if (value == all) {
-                    $('tr>td:first-child:contains()').parent().show();
+                    $('tr>td:first-child').parent().show();
                 } else {
                     $('tr>td:first-child:contains(' + value + ')').parent().show();
                     $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
-                };
+                }
             });
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').focus()
+            });
+            $(".height li").click(function(){
+                $(this).addClass("active").siblings().removeClass("active");
+                //    });
+            })
         });
     </script>
 </head>
 <body>
 <div class="container-fluid">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th data-sortable="true">部门</th>
+                            <th data-sortable="true">姓名</th>
+                            <th data-sortable="true">预测</th>
+                            <th data-sortable="true">手拨</th>
+                            <th data-sortable="true">总计</th>
+                        </tr>
+                        <tr>
+                            <td>VG战队</td>
+                            <td>鳖鳖</td>
+                            <td>carry</td>
+                            <td>carry</td>
+                            <td>carry</td>
+                        </tr>    <tr>
+                            <td>VG战队</td>
+                            <td>鳖鳖</td>
+                            <td>carry</td>
+                            <td>carry</td>
+                            <td>carry</td>
+                        </tr>    <tr>
+                            <td>VG战队</td>
+                            <td>鳖鳖</td>
+                            <td>carry</td>
+                            <td>carry</td>
+                            <td>carry</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
-        <!--<div class="col-md-12 alert alert-success box">-->
-        <!--<div class="col-md-3">-->
-        <!--<div role="alert"><b>讯隆员工通话时长表： <?= $data['time'] ?></b></div>-->
-        <!--</div>-->
-        <!--<div class="col-md-9">-->
-        <!--<select id="d">-->
-        <!--<option>筛选日期</option>-->
-        <!--<?php foreach ($data['date'] as $date): ?>-->
-        <!--<option><?= $date ?></option>-->
-        <!--<?php endforeach; ?>-->
-        <!--</select>-->
-        <!--<select id="s">-->
-        <!--<option value="0" style="font-size: 50px !important;">筛选部门</option>-->
-        <!--<option value="1">超越队</option>-->
-        <!--<option value="2">火狼队</option>-->
-        <!--<option value="3">冲锋队</option>-->
-        <!--<option value="4">团结队</option>-->
-        <!--<option value="5">战狼队</option>-->
-        <!--<option value="6">火焰队</option>-->
-        <!--</select>-->
-        <!--</div>-->
-        <!--</div>-->
         <div class="col-md-12 padding">
             <nav class="navbar navbar-default navbar-inverse">
                 <div class="container-fluid">
@@ -70,7 +101,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Brand</a>
+                        <a class="navbar-brand" href="http://tools.xl127.com">Brand</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -148,7 +179,7 @@
                     <div role="alert"><b>更新时间：<?= $data['time'] ?></b></div>
                 </h4>
                 <tr>
-                    <th data-sortable="true" style="font-size: 50px !important;">部门</th>
+                    <th data-sortable="true">部门</th>
                     <th data-sortable="true">姓名</th>
                     <th data-sortable="true">预测</th>
                     <th data-sortable="true">手拨</th>
@@ -157,15 +188,9 @@
                 </thead>
                 <tbody>
                 <?php foreach ($data['list'] as $list): ?>
-                <tr style="font-size: 50px !important;">
-                    <!--<?php-->
-                    <!--$timeHour = date("H",$list[5]);-->
-                    <!--if ($timeHour >=3) {-->
-                    <!--class = "success"-->
-                    <!--}-->
-                    <!--?>-->
+                <tr>
                     <td><?= $list[0] ?></td>
-                    <td><?= $list[1] ?></td>
+                    <td class="shou" data-toggle="modal" data-target="#myModal"><?= $list[1] ?></td>
                     <td><?= $list[2] ?></td>
                     <td><?= $list[3] ?></td>
                     <td><?= $list[5] ?></td>
