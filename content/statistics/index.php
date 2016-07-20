@@ -21,6 +21,15 @@
             $(".d li").click(function() {
                 window.location.href = 'statistics.php?date=' + $(this).text();
             });
+            $(".s li").click(function() {
+                var value = $(this).text();
+                if (value == $('.s-all').text()) {
+                    $('tr>td:first-child').parent().show();
+                } else {
+                    $('tr>td:first-child:contains(' + value + ')').parent().show();
+                    $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
+                }
+            });
             var all = $('#s option').first('option:selected').text();
             $('#s').change(function() {
                 var value = $('#s').find('option:selected').text();
@@ -78,7 +87,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-12 padding">
             <nav class="navbar navbar-default navbar-inverse">
@@ -101,32 +109,20 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">筛选日期 <span class="caret"></span></a>
                                 <ul class="dropdown-menu d">
                                     <?php foreach ($data['date'] as $date): ?>
-                                    <li><a href="#"><?= $date ?></a></li>
+                                    <li><a href="javascript:void(0);"><?= $date ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </li>
-                        </ul>
-                        <div role="alert" class="nav_xunlong">
-                            <select id="s">
-                                <option>筛选部门</option>
-                                <option>超越队</option>
-                                <option>火狼队</option>
-                                <option>冲锋队</option>
-                                <option>团结队</option>
-                                <option>战狼队</option>
-                                <option>火焰队</option>
-                            </select>
-                        </div>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Link</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">筛选部门 <span class="caret"></span></a>
+                                <ul class="dropdown-menu s">
+                                    <li><a href="javascript:void(0);" class="s-all">全部</a></li>
+                                    <li><a href="javascript:void(0);">超越队</a></li>
+                                    <li><a href="javascript:void(0);">火狼队</a></li>
+                                    <li><a href="javascript:void(0);">冲锋队</a></li>
+                                    <li><a href="javascript:void(0);">团结队</a></li>
+                                    <li><a href="javascript:void(0);">战狼队</a></li>
+                                    <li><a href="javascript:void(0);">火焰队</a></li>
                                 </ul>
                             </li>
                         </ul>
