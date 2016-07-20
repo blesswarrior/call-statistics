@@ -2,6 +2,7 @@ body {
     font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
     background: #f1f4f7;
     color: #5f6468;
+    overflow-x: hidden;
 }
 
 .statistics-footer {
@@ -58,4 +59,8 @@ body {
     color: red;
 }
 
-.shou{cursor: pointer; text-decoration: underline; color: #428bca}
+.shou {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #428bca
+}

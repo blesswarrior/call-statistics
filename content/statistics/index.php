@@ -31,59 +31,51 @@
                     $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
                 }
             });
-            $('#myModal').on('shown.bs.modal', function () {
+            $('#myModal').on('shown.bs.modal', function() {
                 $('#myInput').focus()
             });
-            $(".height li").click(function(){
+            $(".height li").click(function() {
                 $(this).addClass("active").siblings().removeClass("active");
-                //    });
-            })
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $('#myModalLabel').on('show.bs.modal', function (e) {
+            alert('1');
         });
     </script>
 </head>
 <body>
 <div class="container-fluid">
-    <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-hover">
-                        <tr>
-                            <th data-sortable="true">部门</th>
-                            <th data-sortable="true">姓名</th>
-                            <th data-sortable="true">预测</th>
-                            <th data-sortable="true">手拨</th>
-                            <th data-sortable="true">总计</th>
-                        </tr>
-                        <tr>
-                            <td>VG战队</td>
-                            <td>鳖鳖</td>
-                            <td>carry</td>
-                            <td>carry</td>
-                            <td>carry</td>
-                        </tr>    <tr>
-                            <td>VG战队</td>
-                            <td>鳖鳖</td>
-                            <td>carry</td>
-                            <td>carry</td>
-                            <td>carry</td>
-                        </tr>    <tr>
-                            <td>VG战队</td>
-                            <td>鳖鳖</td>
-                            <td>carry</td>
-                            <td>carry</td>
-                            <td>carry</td>
-                        </tr>
+                    <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="10" data-export-types="['csv', 'png']">
+                        <thead>
+                            <tr>
+                                <th data-sortable="true">日期</th>
+                                <th data-sortable="true">姓名</th>
+                                <th data-sortable="true">时长</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($data['list'] as $list): ?>
+                            <tr>
+                                <td><?= $list[0] ?></td>
+                                <td><?= $list[3] ?></td>
+                                <td><?= $list[5] ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -93,7 +85,6 @@
         <div class="col-md-12 padding">
             <nav class="navbar navbar-default navbar-inverse">
                 <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
@@ -104,7 +95,6 @@
                         <a class="navbar-brand" href="http://tools.xl127.com">Brand</a>
                     </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
@@ -122,14 +112,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
                         <div role="alert" class="nav_xunlong">
-                            <b>讯隆员工通话时长表： <?= $data['time'] ?></b>
                             <select id="d">
                                 <option>筛选日期</option>
                                 <?php foreach ($data['date'] as $date): ?>
@@ -159,8 +142,8 @@
                                 </ul>
                             </li>
                         </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
+                    </div>
+                </div>
             </nav>
         </div>
     </div>
@@ -175,16 +158,18 @@
         <div class="col-md-10 tableH" style="background-color: white;">
             <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100" data-export-types="['csv', 'png']">
                 <thead>
-                <h4 class="col-md-12 h4 hidden-xs">
-                    <div role="alert"><b>更新时间：<?= $data['time'] ?></b></div>
-                </h4>
-                <tr>
-                    <th data-sortable="true">部门</th>
-                    <th data-sortable="true">姓名</th>
-                    <th data-sortable="true">预测</th>
-                    <th data-sortable="true">手拨</th>
-                    <th data-sortable="true">总计</th>
-                </tr>
+                    <h4 class="col-md-12 h4 hidden-xs">
+                        <div role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <?= $data['time'] ?>
+                        </div>
+                    </h4>
+                    <tr>
+                        <th data-sortable="true">部门</th>
+                        <th data-sortable="true">姓名</th>
+                        <th data-sortable="true">预测</th>
+                        <th data-sortable="true">手拨</th>
+                        <th data-sortable="true">总计</th>
+                    </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($data['list'] as $list): ?>
@@ -201,8 +186,5 @@
         </div>
     </div>
 </div>
-<footer class="statistics-footer">
-    <p><a href="#top">返回顶部</a></p>
-</footer>
 </body>
 </html>

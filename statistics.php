@@ -24,8 +24,9 @@ class Statistics extends Template
         if (!$result = $this->medoo->select('cc_stat_field', '*', ['name' => I('name')])) {
             $this->error('暂无数据');
         }
-        $this->assign('list', $result);
-        $this->display();
+        return $result;
+        //$this->assign('list', $result);
+        //$this->display();
     }
 
     function historystat() {
