@@ -66,7 +66,7 @@
                     <h4 class="modal-title" id="myModalLabel">历史时长</h4>
                 </div>
                 <div class="modal-body">
-                    <table id="userstat" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="15" data-export-types="['csv', 'png']">
+                    <table id="userstat" data-striped="true" data-search="true" data-show-export="true" data-show-columns="true" data-pagination="true" data-page-size="15" data-export-types="['csv', 'png']">
                         <thead>
                             <tr>
                                 <th data-field="date">日期</th>
