@@ -27,10 +27,6 @@ class Statistics extends Template
         return $result;
     }
 
-    function historystat() {
-
-    }
-
     function report()
     {
         if ($this->medoo->has('cc_statistics', ['date' => $_POST['date']])) {
