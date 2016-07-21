@@ -48,15 +48,25 @@
                 }));
             });
             var a = [];
-            $('table#allstat tr').each(function() {
+            $('table#mainstat tr').each(function() {
                 var g = $(this).children('td').eq(0).text();
                 if (g != '') {a.push(g)};
             });
-            var a = $.unique(a);
+            var a = unique(a);
             for (var i = a.length - 1; i >= 0; i--) {
                 $('ul.g').append('<li><a href="javascript:void(0);">' + a[i] +  '</a></li>');
             };
         });
+        function unique(array) {
+            var result = [], hash = {};
+            for (var i = 0, elem; (elem = array[i]) != null; i++) {
+                if (!hash[elem]) {
+                    result.push(elem);
+                    hash[elem] = true;
+                }
+            }
+            return result;
+        };
     </script>
 </head>
 <body>
@@ -136,7 +146,7 @@
             </ul>
         </div>
         <div class="col-md-10 tableH" style="background-color: white;">
-            <table id="allstat" data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100" data-export-types="['csv', 'png']">
+            <table id="mainstat" data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100" data-export-types="['csv', 'png']">
                 <thead>
                     <h4 class="col-md-12 h4 hidden-xs">
                         <div role="alert">
@@ -152,15 +162,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($data['list'] as $list): ?>
-                <tr <?= $list[4] >= 10800 ? 'class="success highlight"' : '' ?>>
-                    <td><?= $list[0] ?></td>
-                    <td class="shou" data-toggle="modal" data-target="#myModal" data-whatever="<?= $list[1] ?>"><?= $list[1] ?></td>
-                    <td><?= $list[2] ?></td>
-                    <td><?= $list[3] ?></td>
-                    <td><?= $list[5] ?></td>
-                </tr>
-                <?php endforeach; ?>
+                    <?php foreach ($data['list'] as $list): ?>
+                    <tr <?= $list[4] >= 10800 ? 'class="success highlight"' : '' ?>>
+                        <td><?= $list[0] ?></td>
+                        <td class="shou" data-toggle="modal" data-target="#myModal" data-whatever="<?= $list[1] ?>"><?= $list[1] ?></td>
+                        <td><?= $list[2] ?></td>
+                        <td><?= $list[3] ?></td>
+                        <td><?= $list[5] ?></td>
+                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
