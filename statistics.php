@@ -41,7 +41,7 @@ class Statistics extends Template
                 'updatetime' => NOW_TIME,
                 'deletetime' => NOW_TIME + 2592000
             ]);
-            yesterday_stat($_POST['date']);
+            $this->yesterday_stat($_POST['date']);
         }
         if (!$result) {
             return 'fail';
