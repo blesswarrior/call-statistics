@@ -23,20 +23,19 @@
     <script src="assets/js/tableExport.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('ul.d li').click(function() {
+            $('li').on('click', 'ul.d li', function(data) {
                 window.location.href = 'statistics.php?date=' + $(this).text();
             });
-            $('ul.g li').click(function() {
+            $('li').on('click', 'ul.g li', function(data) {
                 var value = $(this).text();
-                console.log(value);
                 if (value == $('.allgroup').text()) {
                     $('tr>td:first-child').parent().show();
                 } else {
                     $('tr>td:first-child:contains(' + value + ')').parent().show();
                     $('tr>td:first-child:not(:contains(' + value + '))').parent().hide();
-                }
+                };
             });
-            $('#myModal').on('show.bs.modal', function (e) {
+            $('#myModal').on('show.bs.modal', function(e) {
                 var o = $(e.relatedTarget);
                 var name = o.data('whatever');
                 var modal = $(this);
