@@ -23,11 +23,12 @@
     <script src="assets/js/tableExport.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $("ul.d li").click(function() {
+            $('ul.d li').click(function() {
                 window.location.href = 'statistics.php?date=' + $(this).text();
             });
-            $("ul.g li").click(function() {
+            $('ul.g li').click(function() {
                 var value = $(this).text();
+                console.log(value);
                 if (value == $('.allgroup').text()) {
                     $('tr>td:first-child').parent().show();
                 } else {
@@ -47,6 +48,15 @@
                     }
                 }));
             });
+            var a = [];
+            $('table#allstat tr').each(function() {
+                var g = $(this).children('td').eq(0).text();
+                if (g != '') {a.push(g)};
+            });
+            var a = $.unique(a);
+            for (var i = a.length - 1; i >= 0; i--) {
+                $('ul.g').append('<li><a href="javascript:void(0);">' + a[i] +  '</a></li>');
+            };
         });
     </script>
 </head>
@@ -107,13 +117,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 筛选部门<span class="caret"></span></a>
                                 <ul class="dropdown-menu g">
-                                    <li><a href="javascript:void(0);" class="allgroup">全部</a></li>
-                                    <li><a href="javascript:void(0);">超越队</a></li>
-                                    <li><a href="javascript:void(0);">火狼队</a></li>
-                                    <li><a href="javascript:void(0);">冲锋队</a></li>
-                                    <li><a href="javascript:void(0);">团结队</a></li>
-                                    <li><a href="javascript:void(0);">战狼队</a></li>
-                                    <li><a href="javascript:void(0);">火焰队</a></li>
+                                    <li><a href="javascript:void(0);" class="allgroup"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> 全部</a></li>
+                                    <li role="separator" class="divider"></li>
                                 </ul>
                             </li>
                         </ul>
@@ -132,7 +137,7 @@
             </ul>
         </div>
         <div class="col-md-10 tableH" style="background-color: white;">
-            <table data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100" data-export-types="['csv', 'png']">
+            <table id="allstat" data-toggle="table" data-striped="true" data-search="true" data-show-export="true" data-show-toggle="true" data-show-columns="true" data-pagination="true" data-page-size="100" data-export-types="['csv', 'png']">
                 <thead>
                     <h4 class="col-md-12 h4 hidden-xs">
                         <div role="alert">
